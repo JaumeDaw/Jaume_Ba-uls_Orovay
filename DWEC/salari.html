@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        let salari = parseInt (prompt("Escriu el teu sou"));
+        let edat = prompt("Escriu la teua edat");
+        
+        if (salari >= 1000 && salari <= 2000){
+            if (edat > 45){
+                salari += ((salari*3)/100);
+            }else{
+                salari += ((salari*10)/100);
+            }
+        }else if (salari < 1000){
+            if (edat < 30){
+                salari = 1100;
+            }else if(edat >= 30 && edat <=45){
+                salari += ((salari * 3)/100);
+            }else{
+                salari += ((salari * 10)/100);
+            }
+        }
+        alert (`El teu salari és ${salari} €`);
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
