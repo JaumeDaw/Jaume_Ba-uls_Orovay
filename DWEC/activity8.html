@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        let altura = parseInt(prompt("Dis-me l'altura del triangle"));
+        for (let i = 1; i<=altura;i++){
+            for(let j = 0; j<=altura-i;j++){
+                document.write("* ");
+            }document.write("<br>");
+        }
+        for (let i = 0; i<=10;i++){
+            document.write("<br>");
+        }
+        for(let i = 1; i<=altura;i++){
+            for(let j = 1;j<=altura-i;j++){
+                document.write("&nbsp;");
+            }
+            for(let k = 1; k<=i;k++){
+                document.write("* ");
+            }
+            document.write("<br>");
+        }
+        for (let i = 0; i<=10;i++){
+            document.write("<br>");
+        }
+        for(let i = 1; i<=altura;i++){
+            for(let j = 0;j<i;j++){
+                document.write("&nbsp;");
+            }
+            for(let k = altura-i+1; k>0;k--){
+                document.write("* ");
+            }
+            document.write("<br>");
+        }
+
+    </script>
+    <title>Activity 8</title>
+</head>
+<body>
+    
+</body>
+</html>
