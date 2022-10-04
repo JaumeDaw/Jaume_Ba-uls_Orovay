@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        let random = parseInt(Math.random()*11);
+        let ok = false;
+        do{
+            let resp = parseInt(prompt("Disme un número entre 0 i 100"));
+            if(resp == random){
+                ok = true;
+                alert ("El número és correcte: " + resp);
+            }
+        }while ( ok == false);
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Correcte!!!</h1>
+</body>
+</html>
