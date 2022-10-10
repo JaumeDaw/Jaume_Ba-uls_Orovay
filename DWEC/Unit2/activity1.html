@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Jaume Bañuls Orovay">
+    <title>Caesar Style Encryption</title>
+    <script>
+        let key = parseInt(prompt("Introduce the key for the encryption:"));
+        let sentence = prompt("Introduce a sentence:").toLowerCase();
+
+        let caesar_sentence = "";
+        for (let i = 0; i<=sentence.length;i++){
+            if(sentence.charAt(i)!==" "){
+                let letter = sentence.charCodeAt(i) + key;
+                if(letter<97){
+                    letter += 26;
+                }else if(letter>122){
+                    letter -= 26;
+                }
+                caesar_sentence += String.fromCharCode(letter);
+            }else{
+                let letter = 32;
+                caesar_sentence += String.fromCharCode(letter);
+            }
+        }
+        alert("Your code encrypted: " + caesar_sentence);
+    </script>
+</head>
+<body>
+    
+    
+</body>
+</html>

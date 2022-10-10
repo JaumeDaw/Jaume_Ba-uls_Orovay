@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Jaume Bañuls Orovay">
+    <title>Polyalphabetic Style Encryption</title>
+    <script>
+        let key = prompt("Introduce the key for the encryption:");
+        let sentence = prompt("Introduce a sentence:");
+
+        let encrypt = "";
+        let j = 0;
+        for(let i = 0; i<sentence.length;i++){
+            let letter;
+            if(j<key.length){
+                letter =  sentence.charCodeAt(i)+parseInt(key.charAt(j));
+                j++;
+            }else{
+                j = 0;
+                letter = sentence.charCodeAt(i)+parseInt(key.charAt(j));
+                j++;
+            }
+            encrypt += String.fromCharCode(letter);
+        }
+        alert(encrypt);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
