@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number frequencies</title>
+</head>
+<body>
+    <script>
+        const rand = new Map();
+        rand.set(1,0).set(2,0).set(3,0).set(4,0).set(5,0).set(6,0).set(7,0).set(8,0).set(9,0).set(10,0);
+        for(let i = 0; i<10000;i++){
+            let num = parseInt((Math.random()*(11-1)+1));
+            if(rand.has(num)){
+                rand.set(num,(rand.get(num)+1));
+            }
+        }
+        let keynumber = rand.keys()
+        for (let number of keynumber){
+            document.write("Number " + number + ": " + rand.get(number)+"<br>");
+        }
+    </script>
+</body>
+</html>

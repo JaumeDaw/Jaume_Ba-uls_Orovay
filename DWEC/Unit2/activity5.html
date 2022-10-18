@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body >
+    <script>
+        let user = prompt("Introduce a user:")
+        let user_valid = false;
+        if(user != user.toLowerCase()){
+            do{
+                alert("Error, introduce the user again");
+                user = prompt("Introduce a user:");
+                if(user == user.toLowerCase){
+                    user_valid = true;
+                }
+            }while(user_valid);
+        }
+        let pass = prompt("Introduce the password:");
+        let pass_valid = false;
+        do{
+            let pass2 = pass;
+            let v = 0;
+            let valid = [];
+            for(let i = 65; i<=90;i++){
+                if(pass.indexOf(String.fromCharCode(i))){
+                    v+=1;
+                }
+                pass2 = pass2.replace(String.fromCharCode(i),"");
+            }
+            if(v>0){
+                valid.push(true);
+                v=0;
+            }
+            for(let i = 97; i<=122;i++){
+                if(pass.indexOf(String.fromCharCode(i))){
+                    v++;
+                }
+                pass2 = pass2.replace(String.fromCharCode(i),"");
+            }
+            if(v>0){
+                valid.push(true);
+                v=0;
+            }
+            for(let i = 0; i<=9;i++){
+                if(pass.indexOf(i)>(-1)){
+                    v++;
+                }
+                pass2 = pass2.replace(i,"");
+            }
+            if(v>0){
+                valid.push(true);
+                v=0;
+            }
+            if(pass2.length>0){
+                valid.push(true);
+            }
+            let cont = 0;
+            
+            for(let i of valid){
+                if(i){
+                    cont++;
+                }
+            }
+            if(cont == 4){
+                pass_valid = true;  
+            }else{
+                valid = valid.splice(0,valid.length);
+                pass = prompt("Introduce the password again:");
+            }
+        }while(!pass_valid);
+        document.write("<table border='1px' style='margin-left:auto ;margin-right:auto'><tr><th>Usuari introduit:</th><td>"+ user + 
+            "</td></tr><tr><th>Contrassenya introduida: </th><td>"+ pass+ "</td></tr></table>")
+    </script>
+</body>
+</html>

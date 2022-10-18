@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group students</title>
+</head>
+<body>
+    <script>
+        let exit = false;
+        var students_names = [];
+        do{
+            let student = prompt("Introduce the name of an student: ");
+            if(student.toLowerCase() != "end"){
+                if(!students_names.includes(student)){
+                    students_names.push(student);
+                }
+            }else{
+                exit=true;
+            }
+            
+        }while(!exit);
+        /*for (let name of students_names){
+            document.write(name + " ,")
+        }*/
+        //document.write(students_names.length);
+        let num_of_teams;
+        let remainder = students_names.length%3;
+        if(students_names.length%3==0){
+            num_of_teams = students_names.length/3;
+            document.write("hi ha : " + num_of_teams + " grups d'estudiants<br>");
+        }else{
+            num_of_teams = (students_names.length-remainder)/3;
+            if(num_of_teams<1){
+                num_of_teams=1;
+            }
+            document.write("hi ha : " + num_of_teams + " grups d'estudiants<br>");
+        }
+        let groups = [];
+        for(let i = 0;i<num_of_teams;i++){
+            groups[i] = [];
+        }
+
+        for(let i = 0; i<num_of_teams;i++){
+            if(remainder == 0){
+                for(let j = 0; j<=2;j++){
+                    let rand_student = parseInt(Math.random()*(students_names.length));
+                    groups[i].push(students_names[rand_student]);
+                    students_names.splice(rand_student,1);
+                }
+            }else{
+                for(let j = 0; j<=2;j++){
+                    let rand_student = parseInt(Math.random()*(students_names.length));
+                    groups[i].push(students_names[rand_student]);
+                    students_names.splice(rand_student,1);
+                }
+                for(let k = 1; k<=remainder;k++){
+                    let rand_student = parseInt(Math.random()*(students_names.length));
+                    let rand_group = parseInt(Math.random()*(groups.length));
+                    if(groups[rand_group].length<4){
+                        groups[rand_group].push(students_names[rand_student]);
+                        students_names.splice(rand_student,1);
+                    }
+                }
+            }
+        } 
+        for(let i = 0; i<groups.length;i++){
+            document.write("Team " + (i+1) + ": ");
+            for(let student of groups[i]){
+                if(student!=undefined){
+                    document.write(student + ", ");
+                }
+                
+            }
+            document.write("<br>");
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindromes</title>
+</head>
+<body>
+    <script>
+        var phrase = prompt("Introduce a phrase:");
+        if(phrase.indexOf(" ")!=(-1)){
+            do{
+                phrase = phrase.replace(" ","").replace(",","").replace("!","");
+            }while(phrase.indexOf(" ")!=(-1));
+        }
+        phrase = phrase.toLowerCase();
+        var reverse = "";
+        for(let i = phrase.length; i>=0;i--){
+            reverse += phrase.charAt(i);
+        }
+
+        if(phrase == reverse){
+            alert(phrase + " and " + reverse + " are palindromes");
+        }else{
+            alert(phrase + " and "+ reverse + " aren't palindromes");
+        }
+        
+    </script>
+    
+</body>
+</html>
