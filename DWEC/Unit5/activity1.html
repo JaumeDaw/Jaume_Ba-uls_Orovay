@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*function evenOdd(x){
+            return x%2==0 ? "even":"odd";
+        }*/
+        const evenOdd = x=> x%2==0 ? "even":"odd";
+    </script>
+</head>
+<body>
+    <script>
+        let number = prompt("Introduce a number:")
+        alert(evenOdd(number));
+
+        for(let i = 0; i<500;i++){
+            let randNum = parseInt(Math.random()*10000+1);
+            document.write(randNum + " -- " + evenOdd(randNum) + "<br>");
+        }
+    </script>
+    
+</body>
+</html>
