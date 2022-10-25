@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table,td,th{
+            border: 1px solid black;
+        }
+        table{
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let word="";
+        let array = [];
+        do{
+            word = prompt("Introduce a word");
+            if(word!=""){
+                array.push(word.toLowerCase())
+            }
+            
+
+        }while(!word=="");
+        mapWord(array);
+
+        function mapWord(array){
+            const contWord = new Map();
+            for(word of array){
+                if(!contWord.has(word)){
+                    contWord.set(word,1);
+                }else{
+                    contWord.set(word,parseInt(contWord.get(word))+1);
+                }
+            }
+            document.write("<table>")
+            for(let [word,value] of contWord){
+                document.write(`<tr><th>Word:</th><td> ${word}</td><th>Value:</th><td>${value}</td></tr>`);
+            }
+            document.write("</table>")
+        }
+    </script>
+</body>
+</html>
