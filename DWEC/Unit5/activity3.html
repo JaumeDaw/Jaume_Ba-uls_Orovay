@@ -8,17 +8,19 @@
 </head>
 <body>
     <script>
-        let num = parseInt(prompt("Introduce a number"))
-        let prime = 0;
-        for(let i = num-1; i>=1; i--){
-            if(num%i==0){
-                prime++;
+        document.write(1 + " is a prime number<br>");
+        for(let num = 1; num<=10000;num++){
+            let prime = 0;
+            for(let i = num-1; i>=1; i--){
+                if(num%i==0){
+                    prime++;
+                }
             }
-        }
-        if(prime==1){
-            alert(num + " is a prime number");
-        }else{
-            alert(num + " is not a prime number");
+            if(prime==1){
+                document.write(num + " is a prime number<br>");
+            }else{
+                document.write("");
+            }
         }
     </script>
     
