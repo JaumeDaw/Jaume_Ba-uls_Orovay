@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity 8</title>
+</head>
+<body>
+    <script>
+        let word="";
+        let array = [];
+        let exit = false;
+        const arrayMapWords = [];
+        const arrayWords = [];
+        do{
+            word = prompt("Introduce a word");
+            if(word!=""){
+                array.push(word.toLowerCase())
+            }
+            if(array.length >=2 && !word){
+                exit = true
+            }
+        }while(exit != true);
+
+        document.write(array + "<br>");
+        mapWord(array,arrayMapWords);
+        let trues = 0;
+        
+        function mapWord(array, arrayMapWords){ 
+            for(let i in array){
+                arrayMapWords[i] = new Map();
+                for(let letter of array[i]){
+                    if(!arrayMapWords[i].has(letter)){
+                        arrayMapWords[i].set(letter,1);
+                    }else{
+                        arrayMapWords[i].set(letter,arrayMapWords[i].get(letter)+1);
+                    }
+                    
+                }
+                (...arrayMapWords) => arrayx;
+                arrayWords[i] = arrayx.join(' ');
+            }
+            for(let i in arrayWords){
+                if(arrayWords[i]==arrayWords[i+1]){
+                    trues++;
+                }
+            }
+            if(trues==arrayWords.length){
+                document.write("true");
+            }else{
+                document.write("false");
+            }
+
+        }
+        
+    </script>
+    
+</body>
+</html>

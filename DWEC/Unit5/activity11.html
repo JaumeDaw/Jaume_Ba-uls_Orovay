@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Activity11</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                text-decoration: none;
+                box-sizing: border-box;
+            }
+            table{
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 5em;
+                width:80%;
+                height: 100%;
+                border-collapse: collapse;
+            }
+            table, tr, td{
+                border: 2px solid black;
+            }
+            td{
+                text-align: center;
+                padding: 0.5em;  
+            }
+        </style>
+    </head>
+    <body>
+        <div id="llengenda">
+            <table>
+                <tr>
+                    <th style="background-color: #333333;">*</th>
+                    <th style="background-color: #ffffff ;">0</th>
+                    <th style="background-color: #00ffbf ;">1</th>
+                    <th style="background-color: #00ff40;">2</th>
+                    <th style="background-color: #bfff00;">3</th>
+                    <th style="background-color: #ffff00">4</th>
+                    <th style="background-color: #ffbf00;">5</th>
+                    <th style="background-color: #ff8000;">6</th>
+                    <th style="background-color: #ff3300;">7</th>
+                    <th style="background-color: #661400;">8</th>
+                </tr>
+            </table>
+            <br>
+        </div>
+        <div id="joc">
+            <script>
+                let num = parseInt(prompt("digues quantes cel·les vols fer:"));
+                let mines = parseInt( prompt("digues num de mines"));
+                tauler(num);
+                if(num*num>mines && mines !== 0){
+                    if(mines>((num*num)/2)){
+                        do{
+                            mines = prompt("torna a dir el num de mines");
+                        }while(mines>(num*num)/2)
+                    }
+                    omplirTauler(num,mines);
+                    posarNumeros(num,mines);
+                }else if((num == 1  && mines !== 0) || (num == 2 && mines !== 0)){
+                    mines = 1;
+                    omplirTauler(num,mines);
+                    posarNumeros(num,mines);
+                }else if(mines == 0){
+                    posarNumeros(num,mines);
+                }
+                posarColor(num);  
+                
+                
+                
+                
+                function tauler(num){
+                    
+                    document.write("<table>");
+                    for(let fila=0;fila<num;fila++){
+                        document.write("<tr>");
+                            for(let col = 0; col<num; col++){
+                                document.write('<td id="c' + ((fila+1) + '_' + (col+1))+'"></td>');
+                                if(col===num-1){
+                                    document.write("</tr>");
+                                }
+                            }
+                    }   
+                    document.write("</table>"); 
+                };
+
+                function omplirTauler(num, mines){
+                    //let i = 1; 
+                    let array = [];
+                    do{
+                        let randFila = parseInt(Math.random()*num+1);
+                        let randCol = parseInt(Math.random()*num+1);
+
+                        let id = ('c'+randFila+'_'+randCol);
+                        if(!array.includes(id)){
+                            array.push(id);
+                            //console.log(i + " " + randFila + " " + randCol + " " + id );
+                            //i++;
+                            document.getElementById(id).innerHTML = "*";
+                            // let valor = document.querySelector('#'+id).innerHTML;
+                            // document.write(id + " " + valor + "<br>");
+                        }
+                        //console.log(array);
+                    }while(array.length != mines)  
+                };
+
+                function posarNumeros(num,mines){
+                    for(let i = 1; i<=num;i++){
+                        for(let j = 1; j<=num; j++){
+                            let id = 'c' + i + '_' + j;
+                            let valor = document.querySelector('#'+id).innerHTML;
+                            if(valor == ""){
+                                document.querySelector('#'+id).innerHTML = 0;
+                                let idN = 'c' + (i-1) + '_' + j;
+                                let idS = 'c' + (i+1) + '_' + j;
+                                let idE = 'c' + i + '_' + (j+1);
+                                let idO = 'c' + i + '_' + (j-1);
+
+                                let idNE = 'c' + (i-1) + '_' + (j+1);
+                                let idSE = 'c' + (i+1) + '_' + (j+1);
+                                let idNO = 'c' + (i-1) + '_' + (j-1);
+                                let idSO = 'c' + (i+1) + '_' + (j-1);
+
+                                if((i-1)!=0){//dalt
+                                    if(document.querySelector('#'+idN).innerHTML == '*'){
+                                        let valor = document.querySelector('#'+id).innerHTML;
+                                        valor = parseInt(valor);
+                                        document.querySelector('#'+id).innerHTML = valor +1;
+                                    }
+                                }
+                                if((j+1)<=num){//dreta
+                                    if(document.querySelector('#'+idE).innerHTML == '*'){
+                                        let valor = document.querySelector('#'+id).innerHTML;
+                                        valor = parseInt(valor);
+                                        document.querySelector('#'+id).innerHTML = valor +1;
+                                    }
+                                }
+                                if((i+1)<=num){//baix
+                                    if(document.querySelector('#'+idS).innerHTML == '*'){
+                                        let valor = document.querySelector('#'+id).innerHTML;
+                                        valor = parseInt(valor);
+                                        document.querySelector('#'+id).innerHTML = valor +1;
+                                    }
+                                }if((j-1)!=0){//esquerre
+                                    if(document.querySelector('#'+idO).innerHTML == '*'){
+                                        let valor = document.querySelector('#'+id).innerHTML;
+                                        valor = parseInt(valor);
+                                        document.querySelector('#'+id).innerHTML = valor +1;
+                                    }
+                                }if((i-1)!=0 && (j+1)<=num){//dalt dreta
+                                    if(document.querySelector('#'+idNE).innerHTML == '*'){
+                                        let valor = document.querySelector('#'+id).innerHTML;
+                                        valor = parseInt(valor);
+                                        document.querySelector('#'+id).innerHTML = valor +1;
+                                    }
+                                }if((i+1)<=num && (j+1)<=num){//baix dreta
+                                    if(document.querySelector('#'+idSE).innerHTML == '*'){
+                                        let valor = document.querySelector('#'+id).innerHTML;
+                                        valor = parseInt(valor);
+                                        document.querySelector('#'+id).innerHTML = valor +1;
+                                    }
+                                }if((i+1)<=num && (j-1)!=0){//baix esquerre
+                                    if(document.querySelector('#'+idSO).innerHTML == '*'){
+                                        let valor = document.querySelector('#'+id).innerHTML;
+                                        valor = parseInt(valor);
+                                        document.querySelector('#'+id).innerHTML = valor +1;
+                                    }
+                                }if((i-1)!=0 && (j-1)!=0){//dalt esquerre
+                                    if(document.querySelector('#'+idNO).innerHTML == '*'){
+                                        let valor = document.querySelector('#'+id).innerHTML;
+                                        valor = parseInt(valor);
+                                        document.querySelector('#'+id).innerHTML = valor +1;
+                                    }
+                                }
+                                // if(document.querySelector('#'+id).innerHTML == 0){
+                                //     document.querySelector('#'+id).innerHTML = '';
+                                // }
+                            }
+                        }
+                    }
+                }
+                
+                function posarColor(num){
+                    for(let i = 1; i<=num;i++){
+                        for(let j = 1; j<=num; j++){
+                            let id = 'c' + i + '_' + j;
+                            if(document.querySelector('#'+id).innerHTML == '*'){
+                                document.getElementById(id).style.backgroundColor = '#333333';
+                            }if(document.querySelector('#'+id).innerHTML == '1'){
+                                document.getElementById(id).style.backgroundColor = '#00ffbf';
+                                document.getElementById(id).style.color = '#00ffbf';
+                            }if(document.querySelector('#'+id).innerHTML == '2'){
+                                document.getElementById(id).style.backgroundColor = '#00ff40';
+                                document.getElementById(id).style.color = '#00ff40';
+                            }if(document.querySelector('#'+id).innerHTML == '3'){
+                                document.getElementById(id).style.backgroundColor = '#bfff00';
+                                document.getElementById(id).style.color = '#bfff00';
+                            }if(document.querySelector('#'+id).innerHTML == '4'){
+                                document.getElementById(id).style.backgroundColor = '#ffff00';
+                                document.getElementById(id).style.color = '#ffff00';
+                            }if(document.querySelector('#'+id).innerHTML == '5'){
+                                document.getElementById(id).style.backgroundColor = '#ffbf00';
+                                document.getElementById(id).style.color = '#ffbf00';
+                            }if(document.querySelector('#'+id).innerHTML == '6'){
+                                document.getElementById(id).style.backgroundColor = '#ff8000';
+                                document.getElementById(id).style.color = '#ff8000';
+                            }if(document.querySelector('#'+id).innerHTML == '7'){
+                                document.getElementById(id).style.backgroundColor = '#ff3300';
+                                document.getElementById(id).style.color = '#ff3300';
+                            }if(document.querySelector('#'+id).innerHTML == '8'){
+                                document.getElementById(id).style.backgroundColor = '#661400';
+                                document.getElementById(id).style.color = '#661400';
+                            }if(document.querySelector('#'+id).innerHTML == '0'){
+                                document.getElementById(id).style.backgroundColor = 'white';
+                                document.getElementById(id).style.color = 'white';
+                            }
+                            
+                        }
+                    }
+                }
+            </script>
+            
+        </div>
+    </body>
+</html>

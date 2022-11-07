@@ -10,19 +10,19 @@
     <form>
         <table>
             <tr>
-                <td>rows</td>
+                <td><label for="rows">rows</label> </td>
                 <td><input type="number" name="rows" id="rows"></td>
             </tr>
             <tr>
-                <td>cols</td>
+                <td><label for="cols">cols</label></td>
                 <td><input type="number" name="cols" id="cols"></td>
             </tr>
             <tr>
-                <td>color</td>
+                <td><label for="color">color</label></td>
                 <td><input type="color" name="color" id="color"></td>
             </tr>
         </table>
-        <button onclick="getValue()">Make a table</button>
+        <button type="button" onclick="getValue()">Make a table</button>
     </form>
     <div>
         <script type="text/javascript">
@@ -39,7 +39,7 @@
         }
 
         function table(rows=10,cols=4, color="black"){
-           document.write('<table style="border: 3px solid ' +  color + ';width:100%;height:100%;";>');
+           document.write('<table style="border: 3px solid ' +  color + ';width:100%;height:100%;border-collapse:collapse;";>');
             for(let i = 0; i<rows;i++){
                 document.write("<tr>");
                 for(let j = 0;j<cols;j++){
