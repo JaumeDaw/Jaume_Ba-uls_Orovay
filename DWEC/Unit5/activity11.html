@@ -26,15 +26,22 @@
                 text-align: center;
                 padding: 0.5em;  
             }
+            .blanc{
+                background-color: #ffffff;
+                color: #ffffff;
+            }
+            body{
+                text-align: center;
+            }
         </style>
     </head>
     <body>
-        <div id="llengenda">
+        <div id="llegenda">
             <table>
                 <tr>
                     <th style="background-color: #333333;">*</th>
-                    <th style="background-color: #ffffff ;">0</th>
-                    <th style="background-color: #00ffbf ;">1</th>
+                    <th style="background-color: #a5a0a0;">0</th>
+                    <th style="background-color: #00ffbf;">1</th>
                     <th style="background-color: #00ff40;">2</th>
                     <th style="background-color: #bfff00;">3</th>
                     <th style="background-color: #ffff00">4</th>
@@ -50,23 +57,30 @@
             <script>
                 let num = parseInt(prompt("digues quantes cel·les vols fer:"));
                 let mines = parseInt( prompt("digues num de mines"));
-                tauler(num);
-                if(num*num>mines && mines !== 0){
-                    if(mines>((num*num)/2)){
+                document.write("<p><b>Tauler de " + num + "x" + num + " caselles</b></p>");
+                
+                if((num*num)>mines && mines !== 0){
+                    if(mines>=((num*num)/2)+1){
                         do{
                             mines = prompt("torna a dir el num de mines");
-                        }while(mines>(num*num)/2)
+                        }while(mines>=((num*num)/2)+1);
                     }
+                    document.write("<p><b>Nº de mines: " + mines + "</b></p>");
+                    tauler(num);
                     omplirTauler(num,mines);
                     posarNumeros(num,mines);
                 }else if((num == 1  && mines !== 0) || (num == 2 && mines !== 0)){
                     mines = 1;
+                    document.write("<p><b>Nº de mines: " + mines + "</b></p>");
+                    tauler(num);
                     omplirTauler(num,mines);
                     posarNumeros(num,mines);
                 }else if(mines == 0){
+                    document.write("<p><b>Nº de mines: " + mines + "</b></p>");
+                    tauler(num);
                     posarNumeros(num,mines);
                 }
-                posarColor(num);  
+                //posarColor(num);  
                 
                 
                 
@@ -77,7 +91,7 @@
                     for(let fila=0;fila<num;fila++){
                         document.write("<tr>");
                             for(let col = 0; col<num; col++){
-                                document.write('<td id="c' + ((fila+1) + '_' + (col+1))+'"></td>');
+                                document.write('<td class="blanc" id="c' + ((fila+1) + '_' + (col+1))+'"onclick="color(this,num)"></td>');
                                 if(col===num-1){
                                     document.write("</tr>");
                                 }
@@ -188,6 +202,7 @@
                             let id = 'c' + i + '_' + j;
                             if(document.querySelector('#'+id).innerHTML == '*'){
                                 document.getElementById(id).style.backgroundColor = '#333333';
+                                document.getElementById(id).style.color = '#333333';
                             }if(document.querySelector('#'+id).innerHTML == '1'){
                                 document.getElementById(id).style.backgroundColor = '#00ffbf';
                                 document.getElementById(id).style.color = '#00ffbf';
@@ -213,12 +228,46 @@
                                 document.getElementById(id).style.backgroundColor = '#661400';
                                 document.getElementById(id).style.color = '#661400';
                             }if(document.querySelector('#'+id).innerHTML == '0'){
-                                document.getElementById(id).style.backgroundColor = 'white';
-                                document.getElementById(id).style.color = 'white';
+                                document.getElementById(id).style.backgroundColor = '#a5a0a0';
+                                document.getElementById(id).style.color = '#a5a0a0';
                             }
                             
                         }
                     }
+                }
+                
+                function color(obj,num) {
+                            if(obj.innerHTML  == '*'){
+                                //document.getElementById(id).style.backgroundColor = '#333333';
+                                posarColor(num);
+                            }if(obj.innerHTML  == '1'){
+                                obj.style.backgroundColor = '#00ffbf';
+                                obj.style.color = '#00ffbf';
+                            }if(obj.innerHTML  == '2'){
+                                obj.style.backgroundColor = '#00ff40';
+                                obj.style.color = '#00ff40';
+                            }if(obj.innerHTML  == '3'){
+                                obj.style.backgroundColor = '#bfff00';
+                                obj.style.color = '#bfff00';
+                            }if(obj.innerHTML  == '4'){
+                                obj.style.backgroundColor = '#ffff00';
+                                obj.style.color = '#ffff00';
+                            }if(obj.innerHTML  == '5'){
+                                obj.style.backgroundColor = '#ffbf00';
+                                obj.style.color = '#ffbf00';
+                            }if(obj.innerHTML  == '6'){
+                                obj.style.backgroundColor = '#ff8000';
+                                obj.style.color = '#ff8000';
+                            }if(obj.innerHTML  == '7'){
+                                obj.style.backgroundColor = '#ff3300';
+                                obj.style.color = '#ff3300';
+                            }if(obj.innerHTML  == '8'){
+                                obj.style.backgroundColor = '#661400';
+                                obj.style.color = '#661400';
+                            }if(obj.innerHTML  == '0'){
+                                obj.style.backgroundColor = '#a5a0a0';
+                                obj.style.color = '#a5a0a0';
+                            }
                 }
             </script>
             
