@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let ar = [1,2,3];
+        console.log(ar.__proto__);
+        Array.prototype.mean = function() { let suma = this.reduce((c,v) =>c+v,0); return (suma/this.length);}
+        ar.mean();
+        console.log(ar.__proto__);
+        console.log(ar.mean());
+    </script>
+</body>
+</html>
