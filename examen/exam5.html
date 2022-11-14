@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piedra, papel o tijeras</title>
+</head>
+<body>
+    <script>
+        function valor(op){
+            const valors = ["pedra", "paper", "tisores"];
+            return valors[op];
+        }
+        let opcionsJoc = [0, 1, 2];
+        let fin = false;
+        let punts = 50;
+        document.write("Inici del joc. Tens " + punts + " punts<br>");
+        alert("Inici del joc. Tens " + punts + " punts")
+        do{
+            let opcions = parseInt(prompt("Pedra (0) Paper (1) o Tisores(2)"));
+            if(opcions === 0 || opcions === 1 || opcions === 2){
+                let aposta = parseInt(prompt("Introdueix la aposta"));
+                let maquinaOpcio = parseInt(Math.random()*opcionsJoc.length);
+                if((opcions == 0 && maquinaOpcio == 1) || (opcions == 1 && maquinaOpcio == 2) || (opcions == 2 && maquinaOpcio == 0)){
+                    punts -= aposta;
+                    document.write("Tu -> " + valor(opcions) + " -- " + valor(maquinaOpcio) + " <-Maquina<br>");
+                    document.write("Has perdut! Tens " + punts + " punts<br>");
+                    alert("Has perdut! Tens " + punts + " punts");
+                }else if (opcions == maquinaOpcio){
+                    
+                    document.write("Tu -> " + valor(opcions) + " -- " + valor(maquinaOpcio) + " <-Maquina<br>");
+                    document.write("Empat. Tens " + punts + " punts<br>");
+                    alert("Empat. Tens " + punts + " punts");
+                }else{
+                    punts += aposta;
+                    
+                    document.write("Tu -> " + valor(opcions) + " -- " + valor(maquinaOpcio) + " <-Maquina<br>");
+                    document.write("Has guanyat! Tens " + punts + " punts<br>");
+                    alert("Has guanyat! Tens " + punts + " punts");
+                }
+            }
+            if(punts >= 200 || punts <= 0){
+                fin = !fin;
+            }
+        }while(!fin);
+    </script>
+    
+</body>
+</html>

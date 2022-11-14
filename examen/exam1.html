@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simon says</title>
+</head>
+<body>
+<script>
+    const colors = ['red', 'blue', 'yellow', 'green'];
+    const sequence = [];
+    let endGame = false;
+    while(!endGame) {
+    //Canviem la variable endGame a false, per a que el bucle es faça mentres no canvie a true
+        const random = Math.round(Math.random() * (colors.length));
+        const color = colors[random];
+    //Canviem el pop per el push, per ficar el següent valor al final del nou array
+        sequence.push(color);
+    //Canviem les cometes dobles per les cometes inverses per poder cridar a les variables de dins
+    //a més inicialitzem el let i a 0 per que amb la primera iteració també ens demane color
+        alert(`Round ${sequence.length} . Current sequence is number : ${sequence}`  );
+        for(let i = 0; i < sequence.length; i++) {
+            if (!endGame) {
+                const play = prompt(`Enter a color (${colors}):`);
+                if (play !== sequence[i]) {
+                    endGame = true;
+                }
+            }
+        }
+    }
+alert(`You are wrong! You've survived ${sequence.length - 1} rounds`);
+</script>
+</body>
+</html>

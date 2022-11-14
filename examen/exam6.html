@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahorcado</title>
+</head>
+<body>
+    <script>
+        const paraules = ["coche", "avion", "casa", "mansion", "camion", "mesa", "silla", "aire", "tierra", "agua", "fuego"];
+        let paraulaRandom = paraules[parseInt(Math.random()*paraules.length)];
+        let asteriscos = '';
+        for(let i = 0; i<paraulaRandom.length;i++){
+            asteriscos += '*';
+        }
+        alert(paraulaRandom);
+        alert(paraulaRandom.indexOf("a"));
+       /*  do{ */
+            alert("La palabra es " + asteriscos);
+        /* } */
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursiu</title>
+</head>
+<body>
+    <script>
+        function hailstone(num){
+            const frases = [];
+            document.write('init');
+            if(num === 1){
+                document.write('1');
+                frases.push('Its finally ' + n);
+                return 1;
+            } else if(n%2 == 0) {
+                document.write("par");
+                frases.push(n + ' is even, so I take half: ' + n/2);
+                n = n/2;
+                hailstone(n);
+            }else {
+                document.write("impar");
+                frases.push(n +' is odd, so I make 3n: ' + n/2);
+                n = n*3+1;
+                hailstone(n);
+            }
+            return frases;
+        }
+        const frases = hailstone(2);
+        //document.write(hailstone(3));
+        for(let i = 0; i < frases.length; i++){
+            document.write(frases[i] + "<br>");
+        }
+    </script>
+    
+</body>
+</html>
