@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <p id="para" class="primer">Hey</p>
+    <button id="boto" oncontextmenu="" >canviar classe</button>
+    <button onclick="afegirClasse(false)">sdfsdfsdaf</button>
+</body>
+</html>
+<script defer> 
+function afegirClasse(boo){
+    let p = document.getElementById("para");
+    if(boo){
+        p.style.backgroundColor = "red";
+    }else{
+        p.style.backgroundColor = "blue";
+    }
+    
+}
+let b = document.getElementById("boto");
+b.addEventListener('mousedown',(e)=>{
+    if(e.button == 2){
+        afegirClasse(true);
+    }
+})
+    /* let p = document.getElementById("para");
+    console.log(p);
+    p.setAttribute("class",p.getAttribute("class") + " " + "segon");
+    console.log(p);
+    p.toggleAttribute("class", false);
+    console.log(p);
+    p.toggleAttribute("class",true);
+    console.log(p);
+    p.style.backgroundColor = "red";
+    p.setAttribute("class" ,"tercer"); */
+</script>
