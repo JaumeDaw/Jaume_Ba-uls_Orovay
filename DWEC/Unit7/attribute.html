@@ -10,7 +10,7 @@
 <body>
     <p id="para" class="primer">Hey</p>
     <button id="boto" oncontextmenu="" >canviar classe</button>
-    <button onclick="afegirClasse(false)">sdfsdfsdaf</button>
+    <!-- <button onclick="afegirClasse(false)">sdfsdfsdaf</button> -->
 </body>
 </html>
 <script defer> 
@@ -27,6 +27,9 @@ let b = document.getElementById("boto");
 b.addEventListener('mousedown',(e)=>{
     if(e.button == 2){
         afegirClasse(true);
+    }
+    if(e.button==0){
+        afegirClasse(false);
     }
 })
     /* let p = document.getElementById("para");
