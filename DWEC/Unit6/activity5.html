@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let d1 = prompt("Introduce a date: (notation dd/mm/yy");
+        let day1 = d1[0]+d1[1];
+        let month1 = (d1[3]+d1[4])-1;
+        let year1 = d1[6]+d1[7];
+
+        let date1;
+        if(day1<32 && month1<12){
+            date1 = new Date(year1,month1,day1);
+        }
+        if(date1 !== undefined){
+            document.write(date1 + "<br>");
+        };
+        
+        let d2 = prompt("Introduce a date: (notation dd/mm/yy");
+        let day2 = d2[0]+d2[1];
+        let month2 = (d2[3]+d2[4])-1;
+        let year2 = d2[6]+d2[7];
+
+        let date2;
+        if(day2<32 && month2<12){
+            date2 = new Date(year2,month2,day2);
+        }
+        if(date2 !== undefined){
+            document.write(date2 + "<br>");
+        };
+
+        if(date1 !== undefined && date2 !== undefined){
+            document.write(Math.abs(parseInt((date1.getTime()-date2.getTime())/(3600000*24))) + " days");
+        }
+        
+        
+    </script>
+</body>
+</html>

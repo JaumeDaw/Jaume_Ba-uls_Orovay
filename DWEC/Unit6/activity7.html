@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DNI</title>
+  </head>
+  <body>
+    <script>
+      function DNI(numbers,letter){
+          this.numbers = numbers;
+          this.letter = letter;
+          this.letterIsValidated = false;
+          this.letterValidator = '/[A-H]{1}|[J-N]{1}|[P-Z]{1}/';
+          this.lletraArray = [{key:0,value:'T'},{key:1,value:'R'},{key:2,value:'W'},{key:3,value:'A'},
+          {key:4,value:'G'},{key:5,value:'M'},{key:6,value:'Y'},{key:7,value:'F'},{key:8,value:'P'},          {key:9,value:'D'},{key:10,value:'X'},{key:11,value:'B'},{key:12,value:'N'},{key:13,value:'J'},       {key:14,value:'Z'},{key:15,value:'S'},{key:16,value:'Q'},{key:17,value:'V'},{key:18,value:'H'},      {key:19,value:'L'},{key:20,value:'C'},{key:21,value:'K'},{key:22,value:'E'}]
+          this.lletraMap = lletraArray.map(({ key, value}) => ({ [key]: value}));
+          this.rest = $this.numbers % 23;
+
+          this.letterValid = () => {return this.lletraArray.get(this.rest)};
+      };
+      let dni;
+      let dniValidate = /([0-9]{8}([A-H]{1}|[J-N]{1}|[P-Z]{1}))/;
+      do{
+          dni = prompt("Introduce your DNI").toUpperCase();
+      }while(!dniValidate.test(dni));
+      let numbers='';
+
+      for(let i = 0; i<8;i++){
+          numbers+=dni[i]+'';
+      }
+      /* document.write(numbers + "<br>" + dni[8]); */
+
+      let d = new DNI(20237691,'Z');
+      document.write(d.letterValid());
+    </script>
+  </body>
+</html>
