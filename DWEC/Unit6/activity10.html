@@ -50,17 +50,22 @@
             for(let j = 1; j < 11; j++){
                 this.cards.push(new Card(i,j));
             }
-        }
-        
+        };
+        this.shuffle = () => {
+          this.cards.sort(() => Math.random() - 0.5);
+        };
+        this.toString = () => {
+          this.cards.forEach(card => {
+            document.write(`${card.toString()}<br>`);
+          })
+        };
       }
-    //   let card = new Card(3, 8);
-    //   console.log(card.toString());
-    //   card.giveValue(1,1);
-    //   console.log(card.toString());
     let cardDeck = new CardDeck();
-    cardDeck.cards.forEach(cards => {
-        document.write(cards.toString() + "<br>")
-    });
+    cardDeck.toString();
+    cardDeck.shuffle();
+    document.write("<br>")
+    cardDeck.toString();
+
     </script>
   </body>
 </html>
