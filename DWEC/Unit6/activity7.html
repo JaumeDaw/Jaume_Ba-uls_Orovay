@@ -60,9 +60,11 @@
       let dniValidate = /([0-9]{8}([A-H]{1}|[J-N]{1}|[P-Z]{1}))/;
       //the regular expression who validates the DNI's structure
       //accepts 8 numbers and only 1 letter between A-H, J-N or P-Z.
+      
       do {
         dni = prompt("Introduce your DNI").toUpperCase();
-      } while (!dniValidate.test(dni));
+        alert(dni.length);
+      } while (!dniValidate.test(dni) || dni.length !== 9);
       //Keeps asking if you don't fit that regular expression
       let numbers = "";
 
