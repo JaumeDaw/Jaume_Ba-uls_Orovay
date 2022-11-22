@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity6</title>
+</head>
+<body>
+    <script>
+        let url = prompt("Introduce a url:");
+        let urlValidator = /[a-zA-Z0-9]+[\:]{1}[\/\/\/]?(([a-zA-Z0-9]+[\.]{1})+[a-zA-Z0-9]?[\@]{1})?/;
+        /* Validates that starts with a word, then is followed by colon, then three forwarding bars can be written or not,
+        you can enter the user name followed by dot, as long as you want, only if you enter a user you can put a password
+        and an @ is placed right after the user if there is no password or if there is puts behind it*/
+        console.log(urlValidator.test(url));
+    </script>
+</body>
+</html>

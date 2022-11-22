@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity8</title>
+</head>
+<body>
+    <script>
+        let data = new Date(); //Made a new object Date
+        if((data.getDay() !== "Saturday" || data.getDay() !== "Sunday") && ((data.getHours()> 9) && (data.getHours() < 14))){
+            document.write("<h1>Welcome</h1>");
+        }else{
+            document.write("<h1>Page closed</h1>");
+        }
+        //if the day isn't Saturday or Sunday and the hour is between 9 and 14 writtes welcome or closed.
+        //getDay returns the day of the week and getHours returns an integer with the local hour.
+    </script>
+    
+</body>
+</html>

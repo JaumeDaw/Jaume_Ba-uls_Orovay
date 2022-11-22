@@ -1,58 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        function Computer(brand, model, ram, hard, screen){
-            this.brand = brand;
-            this.model = model;
-            if(ram === undefined){
-                this.ram = 4;
-            }else{
-                this.ram = ram;
-            }
-            if(hard === undefined){
-                this.hard = 512;
-            }else{
-                this.hard = hard;
-            }
-            if(screen === undefined){
-                this.screen = 17;
-            }else{
-                this.screen = screen;
-            }
+      function Computer(brand, model, ram, hard, screen) {
+        this.brand = brand;
+        this.model = model;
+        if (ram === undefined) {
+          this.ram = 4;
+        } else {
+          this.ram = ram;
+        }
+        if (hard === undefined) {
+          this.hard = 512;
+        } else {
+          this.hard = hard;
+        }
+        if (screen === undefined) {
+          this.screen = 17;
+        } else {
+          this.screen = screen;
+        }
 
-            this.toString = () => (`Brand: ${this.brand}, Model: ${this.model}, 
+        this.toString = () => `Brand: ${this.brand}, Model: ${this.model}, 
             Ram: ${this.ram}GB, Hard disk: ${this.hard}GB, 
-            Screen: ${this.screen} inches`);
+            Screen: ${this.screen} inches`;
+      }
+      //Creation of the object computer with brand and model necessari, and ram,hard-disk and screen optionals ( it puts a default value if not introduced )
+      function Laptop(brand, model, ram, hard, screen, autonomy) {
+        if (hard === undefined) {
+          hard = 256;
         }
-        function Laptop(brand, model, ram, hard, screen,autonomy){
-            if(hard === undefined){
-                hard = 256;
-            }
-            if(screen === undefined){
-                screen = 12;
-            }
-            this.__proto__= new Computer(brand,model,ram,hard,screen);
-            if(autonomy === undefined){
-                this.autonomy = 4;
-            }else{
-                this.autonomy = autonomy;
-            }
-            this.toString = () => this.__proto__.toString() + `, Autonomy: ${this.autonomy}`
+        if (screen === undefined) {
+          screen = 12;
         }
-
-        let c = new Computer("HP", "124fdg");
-        let d = new Laptop("PE", "sdf3w4r");
-        document.write(c.toString()+ "<br>");
-        document.write(d.toString());
-
+        this.__proto__ = new Computer(brand, model, ram, hard, screen);
+        if (autonomy === undefined) {
+          this.autonomy = 4;
+        } else {
+          this.autonomy = autonomy;
+        }
+        this.toString = () =>
+          this.__proto__.toString() + `, Autonomy: ${this.autonomy}`;
+      }
+      //Creation of the object laptop and heritage of the object computer, optionals the same that computer, adding autonomy.
+      let c = new Computer("HP", "124fdg");
+      let d = new Laptop("PE", "sdf3w4r");
+      document.write(c.toString() + "<br>");
+      document.write(d.toString());
     </script>
-    
-</body>
+  </body>
 </html>

@@ -8,32 +8,71 @@
   </head>
   <body>
     <script>
-      function DNI(numbers,letter){
-          this.numbers = numbers;
-          this.letter = letter;
-          this.letterIsValidated = false;
-          this.letterValidator = '/[A-H]{1}|[J-N]{1}|[P-Z]{1}/';
-          this.lletraArray = [{key:0,value:'T'},{key:1,value:'R'},{key:2,value:'W'},{key:3,value:'A'},
-          {key:4,value:'G'},{key:5,value:'M'},{key:6,value:'Y'},{key:7,value:'F'},{key:8,value:'P'},          {key:9,value:'D'},{key:10,value:'X'},{key:11,value:'B'},{key:12,value:'N'},{key:13,value:'J'},       {key:14,value:'Z'},{key:15,value:'S'},{key:16,value:'Q'},{key:17,value:'V'},{key:18,value:'H'},      {key:19,value:'L'},{key:20,value:'C'},{key:21,value:'K'},{key:22,value:'E'}]
-          this.lletraMap = lletraArray.map(({ key, value}) => ({ [key]: value}));
-          this.rest = $this.numbers % 23;
-
-          this.letterValid = () => {return this.lletraArray.get(this.rest)};
-      };
+      // The constructor of the DNI's
+      // we enter the numbers and the letter
+      function DNI(numbers, letter) {
+        this.numbers = numbers;
+        this.letter = letter;
+        // this.mostrarDNI = () => `${this.numbers}${this.letter}`;
+        this.rest = parseInt(this.numbers) % 23; //makes the rest of the division of the numbers and 23
+        this.getRest = () => {
+          return this.rest;
+        };
+        this.letterMap = new Map()
+          .set(0, "T")
+          .set(1, "R")
+          .set(2, "W")
+          .set(3, "A")
+          .set(4, "G")
+          .set(5, "M")
+          .set(6, "Y")
+          .set(7, "F")
+          .set(8, "P")
+          .set(9, "D")
+          .set(10, "X")
+          .set(11, "B")
+          .set(12, "N")
+          .set(13, "J")
+          .set(14, "Z")
+          .set(15, "S")
+          .set(16, "Q")
+          .set(17, "V")
+          .set(18, "H")
+          .set(19, "L")
+          .set(20, "C")
+          .set(21, "K")
+          .set(22, "E");
+          //This map asigns a letter to a number, to make the assignation of the DNI's correct letter
+        this.letterValid = () => {
+          if (this.letter === this.letterMap.get(this.getRest())) {
+            return `The DNI is correct<br> ${this.numbers}${this.letterMap.get(
+              this.getRest())}`;
+          } else {
+            return `The DNI is not correct<br>DNI introduced: ${this.numbers}${
+              this.letter
+            }<br>Correct letter of that DNI: ${this.letterMap.get(
+              this.getRest())}`;
+          }
+        };
+        //this function returns a sentence if the rest matches the letter introduced or not
+      }
       let dni;
       let dniValidate = /([0-9]{8}([A-H]{1}|[J-N]{1}|[P-Z]{1}))/;
-      do{
-          dni = prompt("Introduce your DNI").toUpperCase();
-      }while(!dniValidate.test(dni));
-      let numbers='';
+      //the regular expression who validates the DNI's structure
+      //accepts 8 numbers and only 1 letter between A-H, J-N or P-Z.
+      do {
+        dni = prompt("Introduce your DNI").toUpperCase();
+      } while (!dniValidate.test(dni));
+      //Keeps asking if you don't fit that regular expression
+      let numbers = "";
 
-      for(let i = 0; i<8;i++){
-          numbers+=dni[i]+'';
+      for (let i = 0; i < 8; i++) {
+        numbers += dni[i] + "";
       }
-      /* document.write(numbers + "<br>" + dni[8]); */
-
-      let d = new DNI(20237691,'Z');
+      //puts all the numbers alone and creates the new object DNI
+      let d = new DNI(numbers, dni[8]);
       document.write(d.letterValid());
+      //prints if the method which validates if is correct or not.
     </script>
   </body>
 </html>

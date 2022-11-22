@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Card(suit, value) {
+        if (suit > 0 && suit < 5) {
+          this.suit = suit;
+        }
+        if (value > 0 && value < 11) {
+          this.value = value;
+        }
+        if (this.suit !== undefined && this.value !== undefined) {
+          this.toString = () => {
+            let suitMap = new Map()
+              .set(1, "Coins")
+              .set(2, "Swords")
+              .set(3, "Clubs")
+              .set(4, "Cups");
+            let valueMap = new Map()
+              .set(1, "Ace")
+              .set(2, "2")
+              .set(3, "3")
+              .set(4, "4")
+              .set(5, "5")
+              .set(6, "6")
+              .set(7, "7")
+              .set(8, "Jack")
+              .set(9, "Horse")
+              .set(10, "King");
+            return `${valueMap.get(this.value)} of ${suitMap.get(this.suit)}`;
+          };
+          this.giveValue = (suit,value) => {
+            if((suit > 0 && suit < 5) && (value > 0 && value < 11)){
+                this.suit = suit;
+                this.value = value;
+            }
+          }
+        }
+      }
+
+      function CardDeck(){
+        this.cards = [];
+        for(let i = 1; i < 5; i++){
+            for(let j = 1; j < 11; j++){
+                this.cards.push(new Card(i,j));
+            }
+        }
+        
+      }
+    //   let card = new Card(3, 8);
+    //   console.log(card.toString());
+    //   card.giveValue(1,1);
+    //   console.log(card.toString());
+    let cardDeck = new CardDeck();
+    cardDeck.cards.forEach(cards => {
+        document.write(cards.toString() + "<br>")
+    });
+    </script>
+  </body>
+</html>
