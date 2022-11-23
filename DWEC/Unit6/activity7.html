@@ -63,7 +63,6 @@
       
       do {
         dni = prompt("Introduce your DNI").toUpperCase();
-        alert(dni.length);
       } while (!dniValidate.test(dni) || dni.length !== 9);
       //Keeps asking if you don't fit that regular expression
       let numbers = "";
