@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test 2</title>
+</head>
+<body>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name">
+    <label for="date">Date</label>
+    <input type="date" name="date" id="date">
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email">
+    <script>
+        
+        function Card (valor,palo){
+            this.valor = valor;
+            this.palo = palo;
+
+            this.mostrarCarta = () => {return this.valor + ' de ' + this.palo};
+
+        }
+        function Baraja(){
+            let palos = ["Corazones","Treboles","Diamantes","Picas"];
+            let cartas = [];
+            for(let i = 0; i < 4; i++){
+                for(let j = 1; j < 14; j++){
+                    cartas.push(new Card(j,palos[i]));
+                }
+            }
+            this.toString = () => {
+                cartas.forEach(carta => {
+                    document.write(carta.mostrarCarta() + "<br>");
+                });
+            }
+            this.barajar = () => cartas.sort((a,b) => 0.5 -Math.random());
+            this.repartirCarta = () => { 
+                let rand = Math.floor(Math.random() * cartas.length);
+                let c = cartas[rand].mostrarCarta();
+                cartas.splice(rand,1);
+                return c;};
+        }
+       /*  let b = new Baraja();
+        b.toString();
+        /* b.barajar();
+        document.write("<br>");
+        console.log(b.toString());
+        document.write("<hr><hr><hr><hr><hr><hr>");
+        document.write(b.repartirCarta());
+        document.write("<hr><hr><hr><hr><hr><hr>");
+        b.toString(); */
+
+        function Jugador(name, birth,email,baraja){
+            let regularEmail = /[a-zA-Z0-9]+\@[a-zA-Z0-9]+\.[a-zA-Z0-9]+/
+            if(Math.floor(((Date.now()/3600000)/24)/365)-Math.floor((birth.getTime()/3600000)/24/365) >= 18){
+                this.name = name;
+                this.birth = birth;
+                this.baraja = baraja;
+                if(regularEmail.test(email)){
+                    this.email = email;
+                }else{
+                    this.email = "email not valid!";
+                };
+            }
+
+            this.quienSoy = () => { this.name, this.birth, this.email};
+            this.mano = [];
+
+            this.addCard = () => mano.push(baraja.repartirCarta());
+            this.descartarCarta = () => {
+                if(this.mano.length > 0){
+                    let des = parseInt(prompt(`Tienes ${this.mano.length} cartas`));
+                    if(des != undefined && !isNaN(des) && des!=0){
+                        this.mano[des-1].mostrarCarta();
+                        this.mano.splice((des-1),1);
+                    }else{
+                        alert("That's not a number");
+                    }
+                }else{
+                    alert("You don't have cards!");
+                }
+            }
+        }
+        let nomJugador = document.querySelector('#name');
+        let dateJugador = document.querySelector('#date');
+        let emailJugador = document.querySelector('#email');
+
+        let jugador = new Jugador(nomJugador,dateJugador,emailJugador,new Baraja());
+
+        for(let i= 0; i<5;i++){
+            jugador.addCard();
+        }
+        console.log(jugador.mano);
+    </script>
+    
+</body>
+</html>
