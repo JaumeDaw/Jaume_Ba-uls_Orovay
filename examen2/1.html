@@ -1,92 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test 1</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Welcome to my game</h1>
     <h3>You have to guess a number of 4 different numbers</h3>
     <script>
-        const numbers = [0,1,2,3,4,5,6,7,8,9];
-        console.log(numbers);
+      const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+      console.log(numbers);
 
+      var numberToGuess = "";
 
-        var numberToGuess = '';
-
-        for(let i = 0; i < 4; i++){
-            let num = numbers[parseInt(Math.random() * numbers.length)];
-            if(!numberToGuess.includes(num)){
-                numberToGuess += num;
-            }else{
-                i--;
-            }
-        };
-        console.log(numberToGuess);
-        console.log(numbers);
-        
-        var tries = 0;
-
-
-
-        function mostrar(){
-            let regular = /[0-9]{4}/;
-            let el = document.querySelector('#number');
-            let value = el.value;
-            let list = document.querySelector('#results');
-
-            tries++;
-
-            if(regular.test(el.value)){
-                let prop = document.createElement('li');
-                if(numberToGuess == value){
-                    prop.textContent = `Congratulations!! You guessed the code in ${tries} tries`;
-                    list.appendChild(prop); 
-                    console.log(`Congratulations!! You guessed the code in ${tries} tries`);
-                    el.value = '';
-                    document.querySelector('#game').style.visibility = 'hidden';
-                    document.querySelector('#restart').style.visibility = 'visible';
-                }else{
-                    let trueGuess = 0;
-                    let coin = 0;
-                    for(let i = 0; i<4; i++){
-                        if(numberToGuess.includes(value[i])){
-                            if(numberToGuess[i] == value[i]){
-                                trueGuess++
-                            }else{
-                                coin++;
-                            }
-                        }
-                    }
-                    
-                    prop.textContent = `Your proposition (${value}) has ${trueGuess} right and  ${coin} coincidencies.`;
-                    list.appendChild(prop); 
-                    el.value = '';
-                }
-            }else{
-                el.value = '';
-            }
-        }    
-
-        function restart(){
-            console.log("Not implemented yet. Please reload the page.")
+      for (let i = 0; i < 4; i++) {
+        let num = numbers[parseInt(Math.random() * numbers.length)];
+        if (!numberToGuess.includes(num)) {
+          numberToGuess += num;
+        } else {
+          i--;
         }
+      }
+      console.log(numberToGuess);
+      console.log(numbers);
+
+      var tries = 0;
+
+      function mostrar() {
+        let regular = /[0-9]{4}/;
+        let el = document.querySelector("#number");
+        let value = el.value;
+        let list = document.querySelector("#results");
+
+        tries++;
+
+        if (regular.test(el.value)) {
+          let prop = document.createElement("li");
+          if (numberToGuess == value) {
+            prop.textContent = `Congratulations!! You guessed the code in ${tries} tries`;
+            list.appendChild(prop);
+            console.log(
+              `Congratulations!! You guessed the code in ${tries} tries`
+            );
+            el.value = "";
+            document.querySelector("#game").style.visibility = "hidden";
+            document.querySelector("#restart").style.visibility = "visible";
+          } else {
+            let trueGuess = 0;
+            let coin = 0;
+            for (let i = 0; i < 4; i++) {
+              if (numberToGuess.includes(value[i])) {
+                if (numberToGuess[i] == value[i]) {
+                  trueGuess++;
+                } else {
+                  coin++;
+                }
+              }
+            }
+            prop.textContent = `Your proposition (${value}) has ${trueGuess} right and  ${coin} coincidencies.`;
+            list.appendChild(prop);
+            el.value = "";
+          }
+        } else {
+          el.value = "";
+        }
+      }
+
+      function restart() {
+        console.log("Not implemented yet. Please reload the page.");
+      }
     </script>
 
     <div id="game">
-        <label for="number">Number proposed: </label>
-        <input type="text" name="number" id="number" maxlength="4">
-        <button onclick="mostrar()">Send</button>
+      <label for="number">Number proposed: </label>
+      <input type="text" name="number" id="number" maxlength="4" />
+      <button onclick="mostrar()">Send</button>
     </div>
-    <button style="visibility:hidden" id="restart" onclick="restart()">Restart</button>
-    <ul id="results">
-
-    </ul>
-    
-    
-    
-    
-</body>
+    <button style="visibility: hidden" id="restart" onclick="restart()">
+      Restart
+    </button>
+    <ul id="results"></ul>
+  </body>
 </html>

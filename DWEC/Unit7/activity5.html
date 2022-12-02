@@ -93,31 +93,17 @@
 
     <script>
       let paraula = prompt("Introduce a word to search");
-      if (!window.find(paraula)) {
-        alert("Word not find in this text");
-      }
-
-      function buscarParaulaEnText(element, paraula) {
-        if (element.children) {
-          for (let child of element.children) {
-            /* if(child.length > 0){ */
-            buscarParaulaEnText(child, paraula);
-            /*  } */
+      let text = document.getElementsByTagName('body');
+      
+      for (let i = 0; i < text.length; i++){
+        sentence = text[i].innerHTML.split(' ');
+        for (let j = 0; j< sentence.length; j++){
+          if(sentence[j] === paraula){
+            sentence[j] = '<mark>' + sentence[j] + '</mark>';
           }
-        } else {
-          marcarParaula(paraula, element);
         }
+        text[i].innerHTML = sentence.join(' ')
       }
-
-      function marcarParaula(paraula, element) {
-        let expReg = new RegExp(paraula, "g");
-        let text = element.innerHTML.replace(
-          expReg,
-          "<mark>" + paraula + "</mark>"
-        );
-      }
-      let bodyEle = document.body;
-      buscarParaulaEnText(bodyEle, paraula);
     </script>
   </body>
 </html>
