@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+            color: white;
+            background-color:lightskyblue;        
+        }
+        h1{
+            margin-top: 25%;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="text">Press <kbd>ALT</kbd> + <kbd>F12</kbd> to change background image</h1>
+    <script>
+        document.body.addEventListener('keydown', function(ev){
+            if(ev.altKey && ev.key == 'F12'){
+                console.log("sdfsdf");
+                let title = document.getElementById('text');
+                document.body.style.backgroundColor = "transparent";
+                document.body.style.backgroundImage = "url('https://source.unsplash.com/random')";
+                document.body.style.backgroundSize = "cover";
+            }
+        })
+    </script>
+</body>
+</html>

@@ -13,6 +13,7 @@
         background-color: lightyellow;
         border: 1px solid black;
         border-radius: 5em;
+        padding: 1em;
       "
     >
       I Will Follow
@@ -24,11 +25,17 @@
       follow = follow[0];
       let text = "I'm following!";
       document.addEventListener("mousemove", function (ev) {
-        follow.style.top = `${ev.clientY}px`;
-        follow.style.left = `${ev.clientX}px`;
-        follow.style.backgroundColor = "#000000";
-        follow.style.color = "#ffffff";
-        follow.stye
+        let x = ev.clientX - follow.offsetWidth / 2;
+        let y = ev.clientY - follow.offsetHeight / 2;
+        follow.innerHTML = "I'm following";
+
+        follow.style.top = `${y}px`;
+        follow.style.left = `${x}px`;
+
+        //follow.style.top = `${ev.clientY}px`;
+        //follow.style.left = `${ev.clientX}px`;
+        /* follow.style.backgroundColor = "#000000";
+        follow.style.color = "#ffffff"; */
       });
     </script>
   </body>
