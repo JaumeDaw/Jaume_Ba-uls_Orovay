@@ -9,13 +9,9 @@
         body{
             width: 100%;
             height: 100%;
-            display: flex;
         }
-        div{
-            width: 50%;
-            height: 200px;
-            background-color: red;
-            border: 1px solid black;
+        div{    
+            border: 3px solid black;
         }
     </style>
 </head>
@@ -23,6 +19,31 @@
     
 
     <script>
+        let body = document.body;
+        let square = document.getElementById('square');
+        square.style.margin = `${screen.availHeight/5}px auto` 
+        square.style.width = '50%';
+        square.style.height = screen.availHeight/2 +`px`;
+        square.addEventListener('mouseenter', function(ev){
+            square.style.transition = `all 0.3s ease`;
+            square.style.backgroundColor = 'green';
+        });
+        square.addEventListener('mouseleave', function(ev){
+            square.style.transition = `all 0.3s ease`;
+            square.style.backgroundColor = 'transparent';
+        });
+        square.addEventListener('mousedown', function(ev){
+            square.style.transition = `all 0.3s ease`;
+            square.style.backgroundColor = 'red';
+        });
+        square.addEventListener('mouseup', function(ev){
+            square.style.transition = `all 0.3s ease`;
+            square.style.backgroundColor = 'green';
+        });
+        square.addEventListener('contextmenu', function(ev){
+            ev.preventDefault();
+            square.style.backgroundColor = 'blue';
+        });
 
         
     </script>
