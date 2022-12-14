@@ -6,17 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        div{
+        div#text{
             border: 2px solid black;
             margin: 3em auto;
             width: 50%;
             height: 30rem;
             overflow: auto;
+            border-radius: 12px;
+        }
+        div#coockies{
+            visibility: hidden;
+            display: flex;
+            flex-flow: row;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 10em;
+            background-color: black;
+        }
+        div#coockies button{
+            padding: 0.5em 2em;
+        }
+        div#response p{
+            padding: 2em;
+            color: white;
+            background-color: black;
+            border: 1px solid black;
+            border-radius: 5em;
+            width: fit-content;
+            margin: 12em auto 0 auto;
+            font-size: 1.5rem;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <div>
+    <div id="response"></div>
+    <div id="text">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt cupiditate officiis aliquid quam blanditiis cumque corrupti excepturi illo repudiandae, accusamus animi exercitationem non, suscipit sapiente. Consequuntur laudantium aliquam modi necessitatibus.</p>
         <p>Optio natus illo voluptas excepturi expedita laborum ut, corporis aut doloribus eum? Necessitatibus atque ratione quis officiis, quisquam explicabo quasi at asperiores corrupti laborum quod doloremque neque maiores eaque repellat?</p>
         <p>Sit a obcaecati at nostrum nobis hic porro architecto eaque rem repellat cupiditate veniam vitae, libero alias harum omnis cumque accusantium. Adipisci voluptatum consequatur quaerat expedita consectetur cumque a facere.</p>
@@ -68,6 +97,31 @@
         <p>Ipsam, ut provident. Minus architecto delectus veniam ab quo facere asperiores eveniet in ducimus sapiente debitis ut quam, dolor fugiat aliquam. Ut quos consequuntur alias fugit error dolorem ab nobis!</p>
         <p>Deleniti eaque enim odit iure odio adipisci omnis veritatis tempora cupiditate, sunt quis corporis voluptatem quod ratione expedita. Cumque in laudantium aliquam iure impedit voluptatum maiores ex magnam voluptate odit?</p>
     </div>
+    <div id="coockies">
+        <button id="btn">Tancar</button>
+    </div>
+
+    <script>
+        let text = document.getElementById('text');
+        let tancar = document.getElementById('btn');
+        let coockies = document.getElementById('coockies');
+        let response = document.getElementById("response");
+        let p = document.createElement('p');
+        p.textContent = "Has terminado el texto!";
+        p.style.textAlign = "center";
+        p.style.verticalAlign = "center";
+        text.addEventListener('scroll', function(ev){
+            if(text.scrollTop + text.clientHeight >= text.scrollHeight){
+                coockies.style.visibility = "visible";
+            }
+        });
+        
+        tancar.addEventListener('click', function(ev){
+            coockies.style.visibility = "hidden";
+            text.style.visibility = "hidden";
+            response.appendChild(p);
+        });
+    </script>
     
 </body>
 </html>
