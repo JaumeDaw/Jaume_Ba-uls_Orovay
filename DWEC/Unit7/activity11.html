@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: lightgray;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        h1{
+            text-align: center;
+        }
+        ul{
+            width: 20%;
+            margin: 3em auto;
+            border: 5px solid black;
+            border-radius: 16px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1></h1>
+    <ul>
+        <li>Doctor</li>
+        <li>Luna</li>
+        <li>Agua</li>
+        <li>Bruja</li>
+        <li>Pescado</li>
+        <li>Carne</li>
+        <li>Fuerte</li>
+        <li>Olor</li>
+        <li>Hueco</li>
+        <li>Web</li>
+        <li>Taza</li>
+        <li>Sierpe</li>
+        <li>Vino</li>
+        <li>Iodo</li>
+        <li>Guitarra</li>
+    </ul>
+
+    <script>
+        let list = document.getElementsByTagName('li');
+        let alpha = [];
+        for(let i = 0; i < list.length; i++){
+            alpha[i] = list[i].textContent;
+        }
+        
+        setTimeout(() => {
+            let order = confirm("Order alphabethically?");
+            if(order){
+                let title = document.getElementsByTagName('h1');
+                title = title[0];
+                title.textContent = "Ordered Alphabethically"
+                alpha.sort();
+                for(let i = 0; i < list.length; i++){
+                    list[i].textContent = alpha[i];
+                }
+            }
+        }, 3000);
+
+
+    </script>
+</body>
+</html>

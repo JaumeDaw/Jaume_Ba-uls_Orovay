@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        div{
+            width: 80%;
+            margin: 2em auto;
+        }
+        div p:nth-child(even){
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Before</h1>
+    <div>
+        <p>1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita praesentium quia fugit tempora debitis, ad saepe officia excepturi asperiores voluptatem perspiciatis quis soluta sint dicta! Asperiores velit perspiciatis commodi maiores!</p>
+        <p>2 Omnis, eius aspernatur maiores repudiandae fugit blanditiis. Esse optio quibusdam ipsum doloremque error veritatis. Fuga quaerat iste ducimus facilis, sit labore, laboriosam, nam est minus explicabo consectetur omnis nesciunt veniam.</p>
+        <p>3 Harum animi libero ipsum nostrum officiis obcaecati esse perferendis, quibusdam optio atque recusandae, ratione laudantium id, voluptatum quia doloremque ipsa nobis necessitatibus tempore consequuntur aliquam vitae repellat! Sint, dolor voluptatem!</p>
+        <p>4 Commodi architecto ullam sit tempore earum dolorum debitis quibusdam quam, a eum quos, ipsam fugiat magni quas omnis, doloremque dolor voluptatum deserunt. Praesentium quas rerum debitis quaerat illum reprehenderit excepturi.</p>
+        <p>5 Maxime sequi minus, ex officia, dignissimos nihil, nulla facilis a sapiente aut expedita quo provident culpa odit? Ducimus aut possimus porro, a neque, non quaerat quis dolorem aperiam, animi ut!</p>
+        <p>6 Odio delectus officia ab minus quo nostrum corporis est suscipit voluptatibus. Eos, consequatur dolorum obcaecati repellat sit ea fugiat ratione, nihil officia distinctio doloribus cumque mollitia officiis, veritatis excepturi ab.</p>
+        <p>7 Autem quisquam error, magnam labore perspiciatis enim fugit, obcaecati aut incidunt similique ipsa placeat nihil consectetur, eaque itaque amet. Delectus vel, sit qui iste eius optio eligendi temporibus nostrum officiis?</p>
+        <p>8 Nam, incidunt dolorem veritatis corporis at officiis ea quam voluptates eum accusantium sunt reprehenderit iusto numquam nesciunt commodi assumenda molestiae, aut magni ullam quo sit. Rem sequi veritatis praesentium numquam.</p>
+        <p>9 Ex et molestiae, ea vel reiciendis quas perspiciatis iste fugit illum. Animi cum eveniet voluptatum aut! Eum consectetur numquam ipsum aperiam! Molestiae odit beatae incidunt minima suscipit ea eius dignissimos.</p>
+        <p>10 Rerum libero velit, sapiente error minima eos! Doloribus nemo accusamus officia inventore labore quidem, nobis vel vitae molestias corporis culpa voluptates, excepturi atque nam saepe laboriosam quisquam eaque voluptas beatae?</p>
+    </div>
+    
+    <script>
+        let phrases = document.getElementsByTagName('p');
+        let sentences = [];
+        let order;
+        let cont = phrases.length - 1;
+        
+        for(let i = 0; i < phrases.length; i++){
+            let p = phrases[cont].firstChild.textContent;
+            cont--;
+            sentences.push(p);
+        }
+        setTimeout(() => {
+            order = confirm("Do you want to change the order of the phrases?");
+            if(order){
+                console.log("reverse");
+                let title = document.getElementsByTagName('h1');
+                title = title[0];
+                title.textContent = "After"
+                for (let i = 0; i<phrases.length;i++){
+                    phrases[i].textContent = sentences[i];
+                }
+            }
+        },"3000");
+
+    </script>
+   
+</body>
+</html>
