@@ -11,7 +11,7 @@ button.addEventListener("mousedown", function (ev) {
     let taskBody = document.createElement("p");
     taskBody.textContent =
       input.value.substring(0, 1).toUpperCase() + input.value.substring(1);
-    taskBody.setAttribute('class', "task")
+    taskBody.setAttribute("class", "task");
     let remove = document.createElement("p");
     remove.textContent = "remove";
     remove.setAttribute("class", "remove");
@@ -22,9 +22,9 @@ button.addEventListener("mousedown", function (ev) {
     list.appendChild(task);
 
     taskBody.addEventListener("click", function (ev) {
-      ev.target.parentElement.insertBefore(
-        ev.target.parentElement.parentElement.firstChild,
-        ev.target.parentElement
+      ev.target.parentNode.parentNode.insertBefore(
+        ev.target.parentNode,
+        ev.target.parentNode.parentNode.firstChild
       );
     });
 

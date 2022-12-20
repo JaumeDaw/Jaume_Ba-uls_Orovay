@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  font-family: "Righteous", cursive;
+}
+:root {
+  font-size: 16px;
+}
+
+div,
+input {
+  border-radius: 10px;
+  margin: 0.5em 0;
+  font-size: 2rem;
+}
+div#calculator {
+  border: 5px solid black;
+  width: 20%;
+  background-color: darkgray;
+  margin: 5em auto;
+  padding: 0.5rem;
+}
+div#calculator input#firstNumber,
+div#calculator input#secondNumber,
+div#calculator div#result {
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+  background-color: azure;
+  text-align: right;
+}
+div#calculator div#operators {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  color: white;
+}
+div#calculator div#operators div {
+  background-color: gray;
+  text-align: center;
+  width: 15%;
+  transition: all 0.1s ease;
+  user-select: none;
+}
+div#calculator div#operators div:hover {
+  background-color: maroon;
+}
+div#calculator div#operators div:active {
+  background-color: maroon;
+  box-shadow: inset -1px -1px 5px black;
+}
+div#calculator div#operators div:last-child {
+  background-color: orange;
+}
+div#calculator div#operators div:last-child:hover,
+div#calculator div#operators div:last-child:active {
+  background-color: darkgoldenrod;
+}
+
+div#calculator div#result {
+  background-color: gray;
+}
