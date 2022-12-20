@@ -40,9 +40,9 @@ div#calculator div#operators {
 div#calculator div#operators div {
   background-color: gray;
   text-align: center;
-  width: 15%;
+  width: 17%;
   transition: all 0.1s ease;
-  user-select: none;
+  user-select: none;  
 }
 div#calculator div#operators div:hover {
   background-color: maroon;
@@ -54,8 +54,7 @@ div#calculator div#operators div:active {
 div#calculator div#operators div:last-child {
   background-color: orange;
 }
-div#calculator div#operators div:last-child:hover,
-div#calculator div#operators div:last-child:active {
+div#calculator div#operators div:last-child:hover{
   background-color: darkgoldenrod;
 }
 
