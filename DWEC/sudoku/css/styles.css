@@ -1,0 +1,23 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+table#sudoku{
+    background-color: gray;
+    margin: 5em auto;
+    text-align: center;
+    user-select: none;
+}
+table, tr, td{
+    border: 2px solid black;
+    border-collapse: collapse;
+    transition: all 0.1s ease;
+}
+td{
+    width: 150px;
+    height: 150px;
+}
+td:active{
+    background-color: black;
+}
