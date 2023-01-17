@@ -32,7 +32,6 @@
     <div id="nif"></div>
     <script>
       var capaNIF = document.getElementById("nif");
-      //capaNIF.textContent = "// ";
       fetch(
         "https://randomuser.me/api/?results=10&nat=es&noinfo&exc=login,registered"
       )
@@ -51,7 +50,7 @@
 
             let foto = document.createElement("img");
             foto.setAttribute("src", data.results[i].picture.large);
-            //foto.setAttribute("alt", "foto" + (i + 1));
+            foto.style.userSelect = "none";
 
             let infoName = document.createElement("p");
             let infoEmail = document.createElement("p");
