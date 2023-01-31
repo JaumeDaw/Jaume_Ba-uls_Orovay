@@ -18,7 +18,7 @@
     <script>
       let animation = document.getElementById("animation");
       let peoplePhotos = [];
-      fetch("https://randomuser.me/api/?results=5&inc=picture")
+      fetch("https://randomuser.me/api/?results=2&inc=picture")
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -45,7 +45,7 @@
               foto.setAttribute("src", peoplePhotos[0]);
             } 
             else {
-              setInterval(cambiarFoto(foto,peoplePhotos,i),1000)
+              setTimeout(cambiarFoto(foto,peoplePhotos,i),1000)
               
               /* setTimeout(() => {
                 foto.setAttribute("src", peoplePhotos[i]);
@@ -58,7 +58,7 @@
         setTimeout(
           element.setAttribute("src", array[number-1])
           , 5000);
-          console.log(element.src);
+          //console.log(element.src);
       }
     </script>
   </body>
