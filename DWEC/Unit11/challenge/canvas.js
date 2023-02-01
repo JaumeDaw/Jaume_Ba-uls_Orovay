@@ -7,7 +7,7 @@ var height = (canvas.height = window.innerHeight);
 function ball() {
   //radi i color
 
-  var radi = Math.floor(Math.random() * (50 - 10) + 10);
+  var radi = Math.floor(Math.random() * 40  + 20);
   var colour =
     "rgb(" +
     Math.floor(Math.random() * 255) +
@@ -41,8 +41,8 @@ function ball() {
   }
   //Velocitats
 
-  this.vx = direccio * (Math.random() * 8 + 1);
-  this.vy = direccio * (Math.random() * 8 + 1);
+  this.vx = direccio * (Math.random() * 5 + 2);
+  this.vy = direccio * (Math.random() * 5 + 2);
 
   this.draw = function () {
     ctx.beginPath();
@@ -63,7 +63,7 @@ function ball() {
   };
 }
 let balls = [];
-for (let i = 0; i < 50; i++) {
+for (let i = 0; i < 30; i++) {
   balls.push(new ball());
 }
 function animate() {
