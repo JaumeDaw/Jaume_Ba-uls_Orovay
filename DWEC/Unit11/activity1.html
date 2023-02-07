@@ -1,20 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <canvas id="canvas"></canvas>
     <script>
-        let canvas = document.getElementById("canvas");
-        const ctx = canvas.getContext("2d");
-        ctx.fillStyle = "grey";
-        ctx.lineWidth = "5";
-        ctx.fillRect(10,10,10,80);
-        ctx.addEventListener("click", ()=>{console.log("abb")})
+      let canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      var width = (canvas.width = 1000);
+      var height = (canvas.height = 800);
+
+      function Barra() {
+        this.color = "black";
+        this.x = 0;
+        this.draw = () => {
+          ctx.beginPath();
+          ctx.fillStyle = this.color;
+          ctx.fillRect(this.x, 0, 5, 200);
+          this.x += 10;
+          if (this.x >= 100) {
+            this.x = 0;
+          }
+          ctx.closePath();
+        };
+        //pintar();
+      }
+
+      let space = 0;
+      let barres = [];
+      for (let i = 0; i < 10; i++) {
+        barres.push(new Barra());
+        barres[i].x += space;
+        space += 10;
+        //console.log(barres[i]);
+      }
+
+      function Animate() {
+        ctx.clearRect(0, 0, width, height);
+        for(let i = 0; i<10; i++){
+          
+          if(i<9){
+            barres[i].color = "grey";
+          }
+          barres[i].draw();
+        }
+        setTimeout(()=>{
+          requestAnimationFrame(Animate);
+        },1000)
+      }
+      Animate();
     </script>
-</body>
+  </body>
 </html>

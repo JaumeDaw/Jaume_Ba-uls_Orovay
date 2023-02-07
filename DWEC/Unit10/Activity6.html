@@ -18,7 +18,7 @@
     <script>
       let animation = document.getElementById("animation");
       let peoplePhotos = [];
-      fetch("https://randomuser.me/api/?results=2&inc=picture")
+      fetch("https://randomuser.me/api/?results=10&inc=picture")
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -38,6 +38,7 @@
           //console.log(peoplePhotos));
         })
         .then(() => {
+          console.log(peoplePhotos)
           /* console.log(peoplePhotos); */
           let foto = document.getElementById("foto");
           for (let i = 0; i < peoplePhotos.length; i++) {
@@ -45,7 +46,7 @@
               foto.setAttribute("src", peoplePhotos[0]);
             } 
             else {
-              setTimeout(cambiarFoto(foto,peoplePhotos,i),1000)
+              cambiarFoto(foto,peoplePhotos,i);
               
               /* setTimeout(() => {
                 foto.setAttribute("src", peoplePhotos[i]);
@@ -54,10 +55,9 @@
             }
           }
         });
-      function cambiarFoto(element, array, number) {
-        setTimeout(
-          element.setAttribute("src", array[number-1])
-          , 5000);
+      async function cambiarFoto(element, array, number) {
+        
+          await setInterval(element.setAttribute("src", array[number]),5000);
           //console.log(element.src);
       }
     </script>

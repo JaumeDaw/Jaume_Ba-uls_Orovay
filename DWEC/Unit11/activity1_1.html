@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity 1</title>
+</head>
+
+<body>
+    <h1>Activity 1</h1>
+    <hr>
+    <canvas id="canvas" width="100" height="100"></canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        // obtenemos las dimensiones del canvas
+
+        function Barra() {
+            this.color = "black";
+            this.x = 0;
+            this.pintar = () => {
+                ctx.beginPath();
+                ctx.fillStyle = this.color;
+                ctx.fillRect(this.x, 0, 5, 50);
+                this.x += 10;
+                if (this.x >= 100) {
+                    this.x = 0;
+                }
+                ctx.closePath();
+            }
+        }
+
+        //guardamos las barras en un array sumandole el doble que ocupa el rectangulo, a la posicion 
+        let y = 0;
+        let barras = [];
+        for (let i = 0; i < 10; i++) {
+            barras.push(new Barra());
+            barras[i].x += y;
+            y += 10;
+        }
+
+        function animar() {
+
+            ctx.clearRect(0, 0, 200, 200);
+            for (let i = 0; i < barras.length; i++) {
+                barras[i].pintar();
+                if (i < 9) {
+                    barras[i + 1].color = "grey"
+                }
+            }
+            setTimeout(() => {
+                requestAnimationFrame(animar);
+            }, 1000);
+        }
+        animar();
+    </script>
+
+</body>
+
+</html>
